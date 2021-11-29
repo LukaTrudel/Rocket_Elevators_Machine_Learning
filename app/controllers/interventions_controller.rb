@@ -63,7 +63,16 @@ class InterventionsController < ApplicationController
             config.username = ENV['ZENDESK_USERNAME']
             config.token = ENV['ZENDESK_TOKEN']
         end
-        ZendeskAPI::Ticket.create!(client, 
+        # ZendeskAPI::Ticket.create!($client,
+        #     :subject => "#{@contact.fullNameContact} from #{@contact.compagnyName} ",
+        #     :comment => {
+        #         :value => "Comment: The contact #{@contact.fullNameContact} from company #{@contact.compagnyName} can be reached at email  #{@contact.email} and at phone number #{@contact.phoneNumber}. 
+        #                                                                                                                                                             #{@contact.department} has a project named #{@contact.nameProject} which would require contribution from Rocket Elevators. 
+        #                                                                                                                                                             #{@contact.descriptionProject}
+        #                                                                                                                                                             Attached Message: #{@contact.message}
+        #                                                                                                                                                    The Contact uploaded an attachment"}, :submitter_id => $client.current_user.id , :priority => "urgent", :type => "question")
+          
+        ZendeskAPI::Ticket.create!($client, 
             :subject => "New Intervention", 
             :comment => { 
               :value => "#{current_user.employee.first_name} has requested an intervention for customer: #{params[:customer_id]}.\n\n
