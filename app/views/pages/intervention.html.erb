@@ -1,0 +1,70 @@
+
+            <hr class="m-0" /><!-- 1px line separator -->
+            
+			<button class="btn btn-xlg btn-primary fs-20 fullwidth m-0 rad-0 p-40">
+				<span class="font-lato fs-30">
+                    <strong>INTERVENTIONS</strong>
+				</span>
+			</button>
+            <!-- INTRO -->
+
+
+            <!-- QUOTE -->
+            <section id="quote_data">
+                <div class="container">
+                    <div id="steps-to-quote" class="heading-title heading-dotted text-center">
+						<h2>Intervention form</h2>
+                    </div>
+                </div>
+                
+                <!-- INTERVENTIONS -->
+                <%= form_with url: "/interventions", local: true do |f| %>
+                    
+                        <div id="customer" class="col-md-4">
+                            <%= f.label :customer %>
+                            <%= f.collection_select :customer_id, Customer.all, :id, :fullName, {}, {include_blank: true, required: true} %>
+                        </div>
+                        <br>
+                        <div id="building" class="col-md-4" style="display: none;">
+                            <%= f.label :building %>
+                            <%= f.collection_select :building_id, Building.all, :id, :id, {}, {include_blank: true, required: true} %>
+                        </div>
+                        <br>
+                        <div id="battery" class="col-md-4" style="display: none;">
+                            <%= f.label :battery %>
+                            <%= f.collection_select :battery_id, Batterie.all, :id, :id, {}, {include_blank: true, required: true} %>
+                        </div>
+                        <br>
+                        <div id="column" class="col-md-4" style="display: none;">
+                            <%= f.label :column %>
+                            <%= f.collection_select :column_id, Column.all, :id, :id, include_blank: true %>
+                        </div>
+                        <br>
+                        <div id="elevator" class="col-md-4" style="display: none;">
+                            <%= f.label :elevator %>
+                            <%= f.collection_select :elevator_id, Elevator.all, :id, :id, include_blank: true %>
+                        </div>
+                        <br>
+                        <div id="employee" class="col-md-4">
+                            <%= f.label :employee %>
+                            <%= f.collection_select :employee_id, Employee.all, :id, :id, include_blank: true %>
+                        </div>
+                        <br>
+                        <div class="col-md-4">
+							<%= f.label :description %>
+							<textarea required maxlength="10000" rows="3" class="form-control" name="description" id="description"></textarea>
+						</div>
+                        <br>
+                        <div class="col-md-4">
+                            <%= f.submit "SAVE INTERVENTION", class: "btn btn-primary" %>
+                        </div>
+                    
+                <% end %>
+                <!-- INTERVENTIONS -->
+                
+            </section>
+            <!-- /QUOTE -->
+
+            
+
+    

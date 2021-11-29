@@ -39,4 +39,5 @@ class PagesController < ApplicationController
                                          GROUP BY a.numberAndStreet ,c2.fullName , b.fullNameTechnicalContact').to_json
   end
   
+  
 end
