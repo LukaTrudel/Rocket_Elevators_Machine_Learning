@@ -114,3 +114,6 @@ gem 'zendesk_api', '~> 1.13', '>= 1.13.4'
 
 gem 'twilio-ruby'
 
+gem 'ed25519'
+
+gem 'bcrypt_pbkdf'

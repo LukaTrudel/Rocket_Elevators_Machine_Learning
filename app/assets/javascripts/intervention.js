@@ -6,18 +6,20 @@ $(()=>{
     $("#customer_id").change(function(){
        $("#building").show(); 
         let customer = $(this).val();
-        // The ajax will call a method that will return an json object, on success, it will iterate all of the selections needed
+        // The ajax will call a method that will return an json object
         $.ajax({
             url: "/update_buildings",
             method: "GET",
             data: {customer_id: customer},
             dataType: "json",
             success: function (response) {
+                console.log(response)
+                console.log(response['buildings'][0]['id'])
                 $("#building_id").empty();
                 $("#building_id").append("<option value="+""+"> Select </option>");
 
                 for (let i = 0; i < response['buildings'].length; i++) {
-                    $("#building_id").append("<option value="+ response['buildings'][i].id +">"+ response['buildings'][i].address_building +"</option>");
+                    $("#building_id").append("<option value="+ response['buildings'][i]['id']+">"+ response['buildings'][i]['addressId'] +"</option>");
                 }
             }
         })

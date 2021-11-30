@@ -3,7 +3,7 @@ class InterventionsController < ApplicationController
 
     # called by Ajax 
     def update_buildings
-        @buildingList = Building.where(customer_id: params[:customer_id])
+        @buildingList = Building.where(customerId: params[:customer_id])
         render json: {buildings: @buildingList}
     end
 

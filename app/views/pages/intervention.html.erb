@@ -53,7 +53,7 @@
                         <br>
                         <div id="employee" class="col-md-4">
                             <%= f.label :employee %>
-                            <%= f.collection_select :employee_id, Employee.all, :id, :id, include_blank: true %>
+                            <%= f.collection_select :employee_id, Employee.all, :id, :first_name, include_blank: true %>
                         </div>
                         <br>
                         <div class="col-md-4">
