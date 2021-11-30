@@ -16,6 +16,12 @@
 						<h2>Intervention form</h2>
                     </div>
                 </div>
+
+                <% flash.each do |type, msg| %>
+                <div class="alert alert-info">
+                    <%= msg %>
+                </div>
+                <% end %>
                 
                 <!-- INTERVENTIONS -->
                 <%= form_with url: "/interventions", local: true do |f| %>
@@ -61,11 +67,7 @@
                     
                 <% end %>
                 <!-- INTERVENTIONS -->
-                <% flash.each do |type, msg| %>
-                <div class="alert alert-info">
-                    <%= msg %>
-                </div>
-                <% end %>
+                
                 
             </section>
             <!-- /QUOTE -->

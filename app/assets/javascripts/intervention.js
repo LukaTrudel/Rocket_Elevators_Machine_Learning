@@ -47,7 +47,7 @@ $(()=>{
 
                 for (let i = 0; i < response['batteries'].length; i++) {
                     $("#battery_id").append("<option value="+ response['batteries'][i].id +">"+ response['batteries'][i].id +"</option>");
-                    console.log("bruh")
+                    
                 }
             }
         })
@@ -76,7 +76,7 @@ $(()=>{
 
                 for (let i = 0; i < response['columns'].length; i++) {
                     $("#column_id").append("<option value="+ response['columns'][i].id +">"+ response['columns'][i].id +"</option>");
-                    console.log("bruh")
+
                 }
             }
         })
