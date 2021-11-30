@@ -1,7 +1,7 @@
 class InterventionsController < ApplicationController
     require 'zendesk_api'
 
-    # These Methods are called by tje Afax function
+    # called by Ajax 
     def update_buildings
         @buildingList = Building.where(customer_id: params[:customer_id])
         render json: {buildings: @buildingList}
@@ -22,11 +22,7 @@ class InterventionsController < ApplicationController
         render json: {elevators: @elevatorList}
     end
 
-    # With this logic, only the last element selected will be saved in the database
-    # Coaches words:
-    # - building && battery filled in                       ==> we only want to save the battery_id to the database
-    # - building && battery && column filled in             ==> we only want to save the column_id to the database
-    # - building && battery && column && elevator filled in ==> we only want to save the elevator_id to the database
+    # only the last element selected will be saved in the database
     def create
 
        intervention = Intervention.new
@@ -56,7 +52,7 @@ class InterventionsController < ApplicationController
 
     end
 
-    # This Method will send a ticket after the creation of an intervention
+    # send a ticket after the creation of an intervention
     def create_ticket
         client = ZendeskAPI::Client.new do |config|
             config.url = ENV['ZENDESK_URL']

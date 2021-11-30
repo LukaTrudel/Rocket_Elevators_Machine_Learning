@@ -1,6 +1,6 @@
 $(()=>{
 
-    // These are the ajax calls for each field
+    // ajax calls for each field
     // With the current Show/Hide logic, the next field will only be shown once the value of the previous field has been changed
 
     $("#customer_id").change(function(){
@@ -103,7 +103,6 @@ $(()=>{
 
                 for (let i = 0; i < response['elevators'].length; i++) {
                     $("#elevator_id").append("<option value="+ response['elevators'][i].id +">"+ response['elevators'][i].id +"</option>");
-                    console.log("bruh")
                 }
             }
         })
