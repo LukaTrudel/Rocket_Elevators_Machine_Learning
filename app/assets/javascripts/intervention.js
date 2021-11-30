@@ -48,7 +48,7 @@ $(()=>{
                 $("#battery_id").append("<option value="+""+"> Select </option>");
 
                 for (let i = 0; i < response['batteries'].length; i++) {
-                    $("#battery_id").append("<option value="+ response['batteries'][i].id +">"+ response['batteries'][i].id +"</option>");
+                    $("#battery_id").append("<option value="+ response['batteries'][i]['id'] +">"+ response['batteries'][i].id +"</option>");
                     
                 }
             }
