@@ -48,7 +48,7 @@ $(()=>{
                 $("#battery_id").append("<option value="+""+"> Select </option>");
 
                 for (let i = 0; i < response['batteries'].length; i++) {
-                    $("#battery_id").append("<option value="+ response['batteries'][i]['id'] +">"+ response['batteries'][i].id +"</option>");
+                    $("#battery_id").append("<option value="+ response['batteries'][i]['id'] +">"+ response['batteries'][i]['id'] +"</option>");
                     
                 }
             }
@@ -77,7 +77,7 @@ $(()=>{
                 if($("#battery_id").val() != ""){$("#elevator").hide();}
 
                 for (let i = 0; i < response['columns'].length; i++) {
-                    $("#column_id").append("<option value="+ response['columns'][i].id +">"+ response['columns'][i].id +"</option>");
+                    $("#column_id").append("<option value="+ response['columns'][i]['id'] +">"+ response['columns'][i]['id'] +"</option>");
 
                 }
             }
@@ -104,7 +104,7 @@ $(()=>{
                 $("#elevator_id").append("<option value="+""+"> Select </option>");
 
                 for (let i = 0; i < response['elevators'].length; i++) {
-                    $("#elevator_id").append("<option value="+ response['elevators'][i].id +">"+ response['elevators'][i].id +"</option>");
+                    $("#elevator_id").append("<option value="+ response['elevators'][i]['id'] +">"+ response['elevators'][i]['id'] +"</option>");
                 }
             }
         })
