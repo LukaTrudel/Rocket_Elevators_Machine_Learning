@@ -4,8 +4,8 @@ class CreateInterventions < ActiveRecord::Migration[5.2]
       t.bigint :author
       t.bigint :customer_id
       t.bigint :building_id
-      t.bigint :battery_id, null: true
-      t.bigint :column_id, null: true
+      t.bigint :battery_id
+      t.bigint :column_id
       t.bigint :elevator_id, null: true
       t.integer :employee_id, null: true
       t.datetime :start_of_intervention, null: true
