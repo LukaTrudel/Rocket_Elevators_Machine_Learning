@@ -22,7 +22,7 @@ class InterventionsController < ApplicationController
         render json: {elevators: @elevatorList}
     end
 
-    # only the last element selected will be saved in the database
+    
     def create
         @intervention = Intervention.new()
         
@@ -33,7 +33,7 @@ class InterventionsController < ApplicationController
         @intervention.column_id = params[:column_id]
         @intervention.elevator_id = params[:elevator_id]
         @intervention.employee_id = params[:employee_id]
-        @intervention.report = params[:report]
+        @intervention.report = params[:description]
 
         @intervention.save!
 
