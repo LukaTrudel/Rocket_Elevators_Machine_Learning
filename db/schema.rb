@@ -129,7 +129,7 @@ ActiveRecord::Schema.define(version: 2021_12_02_084029) do
     t.bigint "author", null: false
     t.bigint "customer_id", null: false
     t.bigint "building_id", null: false
-    t.bigint "battery_id"
+    t.bigint "battery_id", null: false
     t.bigint "column_id"
     t.bigint "elevator_id"
     t.integer "employee_id"
