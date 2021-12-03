@@ -94,6 +94,16 @@ To access the database, use Dbeaver or MySQLWorkbench, which shows a history of 
 
 <br>
 
+
+## Consolidation week
+
+The site used for consolidation week is : http://rocketelevatorsproject.me/
+
+The API end points added in the consolidation week can be found here. 
+
+https://github.com/LukaTrudel/Rocket_Elevators_REST_API
+
+
 ## Built With
 
 * [Ruby V-2.6.6](https://www.ruby-lang.org/en/)
@@ -118,5 +128,3 @@ To access the database, use Dbeaver or MySQLWorkbench, which shows a history of 
 
 <br>
 
-##
-Project Link: [https://github.com/AlexWallot/Rocket_Elevators_API](https://github.com/lemyted/Rocket_Elevators_API)
