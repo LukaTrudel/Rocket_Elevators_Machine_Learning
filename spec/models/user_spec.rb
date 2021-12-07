@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-# Small test to validate the presence of an email and password
+# validate the presence of an email and password
 RSpec.describe User, :type => :model do
     context 'validating attributes' do
         user = User.new(email: 'rocket.dave@gmail.com', password: 'dogcat1')
