@@ -13,11 +13,3 @@ RSpec.describe QuoteController do
     end
 end
 
-# RSpec.describe "Quote", :type => :feature do
-#     context "when visiting quotes page" do
-#         it "should display the quote form" do
-#             visit 'pages/quote'
-#             expect(page).to have_text('Request a Quote')
-#         end
-#     end
-# end

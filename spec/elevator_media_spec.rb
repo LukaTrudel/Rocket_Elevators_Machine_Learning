@@ -1,7 +1,7 @@
 require 'elevator_media'
 
 meowApi = "https://meowfacts.herokuapp.com/"
-testGame = "<iframe width=100% height=100% src=https://www.addictinggames.com/embed/html5-games/23635 scrolling=no></iframe>"
+youtube = "<iframe width=100% height=100% src=https://www.youtube.com/watch?v=MWGHbTqY5FE scrolling=no></iframe>"
 
 
 def format(data)
@@ -24,8 +24,8 @@ describe ElevatorMedia::Streamer do
     describe "getContent test" do
         
         context 'test for data fetch' do
-            it 'returns html game' do
-                expect(ElevatorMedia::Streamer.getContent("game")).to eq(format(testGame)) 
+            it 'returns html youtube' do
+                expect(ElevatorMedia::Streamer.getContent("youtube")).to eq(format(youtube)) 
             end
         end
 
