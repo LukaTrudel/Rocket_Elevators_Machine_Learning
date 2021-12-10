@@ -37,7 +37,7 @@ describe ElevatorMedia::Streamer do
         
         
          # Test that will check if the response is in the correct format using a regex match
-        context 'test for data fecth' do
+        context 'test for data fetch' do
             it 'returns html random quote' do
                 expect(ElevatorMedia::Streamer.getContent("quote")).to match(/<div>/)
             end
