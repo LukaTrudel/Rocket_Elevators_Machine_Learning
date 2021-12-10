@@ -8,7 +8,7 @@ module ElevatorMedia
         def self.format(data)
             "<div> #{data} </div>"
         end
-        # returns different content depending on which argument we pass in
+        
         def self.getContent(data)
             return format(meow()) if data == "meow"
             return format(youtube()) if data == "youtube"
