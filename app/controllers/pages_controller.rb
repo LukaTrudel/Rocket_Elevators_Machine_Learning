@@ -38,6 +38,9 @@ class PagesController < ApplicationController
                                          JOIN addresses a on a.id = b.addressId
                                          GROUP BY a.numberAndStreet ,c2.fullName , b.fullNameTechnicalContact').to_json
   end
+
+  def machine_learning
+  end
   
   
 end

@@ -1,0 +1,39 @@
+
+<div>
+  <form enctype="multipart/form-data" name="upload" action="cognitive/upload" method="POST" >
+
+    <input name="uploadfile" type="file" multiple>
+    <p>Drag your files here</p>
+    <button type="submit" id="submit_txt" >Get text</button>
+    
+    <div>
+          <select name="position" class="form-control pointer required" id="language">
+              <option value="nil">--- Select ---</option>
+              <option value="en-Us">English</option>
+              <option value="fr-Fr">French</option>
+          </select>
+    </div>
+  </form>
+
+</div>
+
+
+
+
+
+<script>
+
+
+$(document).ready(function(){
+  $('form input').change(function () {
+    $('form p').text(this.files.length + " file(s) selected");
+  });
+
+  $('#submit_txt').click(function () {
+  });
+
+}); 
+
+</script>
+
+

@@ -7,6 +7,7 @@ Rails.application.routes.draw do
   get 'pages/quote'
   get 'pages/charts'
   get 'pages/admin_stats'
+  get 'pages/machine_learning'
   get '/quote/new', to: 'quote#new'
 
   get 'pages/intervention'
