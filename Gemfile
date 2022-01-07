@@ -122,3 +122,5 @@ gem 'ed25519'
 gem 'bcrypt_pbkdf'
 
 gem 'quotify'
+
+gem 'net-scp'
