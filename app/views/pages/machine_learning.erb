@@ -1,5 +1,6 @@
 <%= csrf_meta_tag %>
 <div class="center" >
+  <h1> Machine Learning (can take 2 to 5 minutes)</h1>
   <form enctype="multipart/form-data" name="upload" action="cognitive/upload" method="POST" >
 
     <input id="upload" name="uploadfile" type="file" multiple>
@@ -50,11 +51,28 @@ $(document).ready(function(){
             beforeSend: function(xhr) {xhr.setRequestHeader('X-CSRF-Token', $('meta[name="csrf-token"]').attr('content'))},
             data: {file: file.name},
             success: function(data) {
-                console.log(data);
+              setTimeout(function() {
+                  getRequest(data['location']);
+              }, 5000);
             }
         })
     } 
   });
+
+  function getRequest(data) {
+    $.ajax({
+            url: "/identification/selectedProfile",
+            type: "GET",
+            beforeSend: function(xhr) {xhr.setRequestHeader('X-CSRF-Token', $('meta[name="csrf-token"]').attr('content'))},
+            data: {url: data},
+            success: function(data) {
+                for (let i = 0; i < data['identifiedProfile'].length; i++) {
+                    console.log(data['identifiedProfile'][i]['processingResult']);
+                }
+                
+            }
+        });
+  }
 
 }); 
 

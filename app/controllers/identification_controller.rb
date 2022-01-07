@@ -22,14 +22,14 @@ class IdentificationController < ApplicationController
 
         response = http.request(request)
 
-        render json: response['Operation-Location']       
+        render json: {location: response['Operation-Location']}       
     end
 
     def selectedProfile
         require 'net/http'
         require "uri"
-        puts operation
-        url = operation
+
+        url = params[:url]
 
         uri = URI.parse(url)
 
@@ -42,6 +42,6 @@ class IdentificationController < ApplicationController
 
         response = http.request(request)
 
-        puts response.body
+        render json: {identifiedProfile: response.body}
     end
 end
