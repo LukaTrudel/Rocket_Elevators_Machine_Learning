@@ -1,20 +1,26 @@
-
-<div>
+<%= csrf_meta_tag %>
+<div class="center" >
   <form enctype="multipart/form-data" name="upload" action="cognitive/upload" method="POST" >
 
-    <input name="uploadfile" type="file" multiple>
-    <p>Drag your files here</p>
-    <button type="submit" id="submit_txt" >Get text</button>
+    <input id="upload" name="uploadfile" type="file" multiple>
+    <p id="select">Drag your files here</p>
     
     <div>
-          <select name="position" class="form-control pointer required" id="language">
-              <option value="nil">--- Select ---</option>
+          <p>Select the language</p>
+          <select name="position" class="form-control pointer required reduce" id="language">
+              <option value="">--- Select ---</option>
               <option value="en-Us">English</option>
               <option value="fr-Fr">French</option>
           </select>
     </div>
   </form>
-
+  <div class="button-center">
+    <button type="submit" id="submit_button" class="btn btn-primary" >Get identified profile</button>
+  </div>
+  <div>
+    <h3> identified Profile</h3>
+    <p id="profile"></p>
+  </div>
 </div>
 
 
@@ -26,10 +32,28 @@
 
 $(document).ready(function(){
   $('form input').change(function () {
-    $('form p').text(this.files.length + " file(s) selected");
+    $('#select').text(this.files.length + " file(s) selected");
   });
 
-  $('#submit_txt').click(function () {
+  $('#submit_button').click(function () {
+    if ($('#language').val() == "" || $('#upload').val() == "") {
+      alert("One field is empty");
+    }else{
+        var params = {
+            // Request parameters
+            "shortAudio": "true",
+        };
+        var file = $('input#upload')[0].files[0];
+        $.ajax({
+            url: "/identification",
+            type: "POST",
+            beforeSend: function(xhr) {xhr.setRequestHeader('X-CSRF-Token', $('meta[name="csrf-token"]').attr('content'))},
+            data: {file: file.name},
+            success: function(data) {
+                console.log(data);
+            }
+        })
+    } 
   });
 
 }); 
