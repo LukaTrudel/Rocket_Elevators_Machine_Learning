@@ -42,6 +42,8 @@ class IdentificationController < ApplicationController
 
         response = http.request(request)
 
-        render json: {identifiedProfile: response.body}
+        respond_to do |format|
+            format.json  { render :json => response.body }      
+        end
     end
 end

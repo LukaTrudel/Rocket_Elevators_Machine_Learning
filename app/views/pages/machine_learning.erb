@@ -53,7 +53,7 @@ $(document).ready(function(){
             success: function(data) {
               setTimeout(function() {
                   getRequest(data['location']);
-              }, 5000);
+              }, 10000);
             }
         })
     } 
@@ -66,10 +66,7 @@ $(document).ready(function(){
             beforeSend: function(xhr) {xhr.setRequestHeader('X-CSRF-Token', $('meta[name="csrf-token"]').attr('content'))},
             data: {url: data},
             success: function(data) {
-                for (let i = 0; i < data['identifiedProfile'].length; i++) {
-                    console.log(data['identifiedProfile'][i]['processingResult']);
-                }
-                
+                $('#profile').text(data['processingResult']['identifiedProfileId'])
             }
         });
   }
