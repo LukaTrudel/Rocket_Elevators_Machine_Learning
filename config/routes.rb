@@ -15,6 +15,7 @@ Rails.application.routes.draw do
   get 'update_battery', to: 'interventions#update_battery'
   get 'update_column', to: 'interventions#update_column'
   get 'update_elevator', to: 'interventions#update_elevator'
+  get '/identification/selectedProfile', to: 'identification#selectedProfile'
 
   resources :interventions 
   
