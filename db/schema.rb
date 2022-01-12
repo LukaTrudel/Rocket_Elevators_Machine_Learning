@@ -12,7 +12,7 @@
 
 ActiveRecord::Schema.define(version: 2021_12_02_084029) do
 
-  create_table "addresses", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+  create_table "addresses", options: "CREATE TABLE \"addresses\" (\n  \"id\" bigint NOT NULL AUTO_INCREMENT,\n  \"typeAddress\" varchar(255) NOT NULL,\n  \"status\" varchar(255) NOT NULL,\n  \"entity\" varchar(255) NOT NULL,\n  \"numberAndStreet\" varchar(255) NOT NULL,\n  \"suiteOrApartment\" varchar(255) NOT NULL,\n  \"city\" varchar(255) NOT NULL,\n  \"postalCode\" varchar(255) NOT NULL,\n  \"country\" varchar(255) NOT NULL,\n  \"notes\" varchar(255) NOT NULL,\n  \"lat\" float NOT NULL,\n  \"long\" float NOT NULL,\n  \"created_at\" datetime NOT NULL,\n  \"updated_at\" datetime NOT NULL,\n  PRIMARY KEY (\"id\")\n)", force: :cascade do |t|
     t.string "typeAddress", null: false
     t.string "status", null: false
     t.string "entity", null: false
@@ -28,7 +28,7 @@ ActiveRecord::Schema.define(version: 2021_12_02_084029) do
     t.datetime "updated_at", null: false
   end
 
-  create_table "batteries", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+  create_table "batteries", options: "CREATE TABLE \"batteries\" (\n  \"id\" bigint NOT NULL AUTO_INCREMENT,\n  \"buildingId\" bigint NOT NULL,\n  \"types\" varchar(255) NOT NULL,\n  \"status\" varchar(255) NOT NULL,\n  \"employeeId\" int NOT NULL,\n  \"dateCommissioning\" datetime NOT NULL,\n  \"dateLastInspection\" datetime NOT NULL,\n  \"certificateOperations\" varchar(255) NOT NULL,\n  \"information\" varchar(255) NOT NULL,\n  \"notes\" varchar(255) NOT NULL,\n  \"created_at\" datetime NOT NULL,\n  \"updated_at\" datetime NOT NULL,\n  PRIMARY KEY (\"id\"),\n  KEY \"fk_rails_a41b912b01\" (\"buildingId\"),\n  KEY \"fk_rails_b3952b46cb\" (\"employeeId\"),\n  CONSTRAINT \"fk_rails_a41b912b01\" FOREIGN KEY (\"buildingId\") REFERENCES \"buildings\" (\"id\"),\n  CONSTRAINT \"fk_rails_b3952b46cb\" FOREIGN KEY (\"employeeId\") REFERENCES \"employees\" (\"id\")\n)", force: :cascade do |t|
     t.bigint "buildingId", null: false
     t.string "types", null: false
     t.string "status", null: false
@@ -44,7 +44,7 @@ ActiveRecord::Schema.define(version: 2021_12_02_084029) do
     t.index ["employeeId"], name: "fk_rails_b3952b46cb"
   end
 
-  create_table "building_details", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+  create_table "building_details", options: "CREATE TABLE \"building_details\" (\n  \"id\" bigint NOT NULL AUTO_INCREMENT,\n  \"buildingId\" bigint NOT NULL,\n  \"informationKey\" varchar(255) NOT NULL,\n  \"value\" varchar(255) NOT NULL,\n  \"created_at\" datetime NOT NULL,\n  \"updated_at\" datetime NOT NULL,\n  PRIMARY KEY (\"id\"),\n  KEY \"fk_rails_639c920861\" (\"buildingId\"),\n  CONSTRAINT \"fk_rails_639c920861\" FOREIGN KEY (\"buildingId\") REFERENCES \"buildings\" (\"id\")\n)", force: :cascade do |t|
     t.bigint "buildingId", null: false
     t.string "informationKey", null: false
     t.string "value", null: false
@@ -53,7 +53,7 @@ ActiveRecord::Schema.define(version: 2021_12_02_084029) do
     t.index ["buildingId"], name: "fk_rails_639c920861"
   end
 
-  create_table "buildings", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+  create_table "buildings", options: "CREATE TABLE \"buildings\" (\n  \"id\" bigint NOT NULL AUTO_INCREMENT,\n  \"customerId\" bigint NOT NULL,\n  \"addressId\" bigint NOT NULL,\n  \"fullNameAdministrator\" varchar(255) NOT NULL,\n  \"emailAdministrator\" varchar(255) NOT NULL,\n  \"phoneNumberAdministrator\" varchar(255) NOT NULL,\n  \"fullNameTechnicalContact\" varchar(255) NOT NULL,\n  \"emailTechnicalContact\" varchar(255) NOT NULL,\n  \"phoneTechnicalContact\" varchar(255) NOT NULL,\n  \"created_at\" datetime NOT NULL,\n  \"updated_at\" datetime NOT NULL,\n  PRIMARY KEY (\"id\"),\n  KEY \"fk_rails_1a4fe0cf30\" (\"addressId\"),\n  KEY \"fk_rails_e804dec3ca\" (\"customerId\"),\n  CONSTRAINT \"fk_rails_1a4fe0cf30\" FOREIGN KEY (\"addressId\") REFERENCES \"addresses\" (\"id\"),\n  CONSTRAINT \"fk_rails_e804dec3ca\" FOREIGN KEY (\"customerId\") REFERENCES \"customers\" (\"id\")\n)", force: :cascade do |t|
     t.bigint "customerId", null: false
     t.bigint "addressId", null: false
     t.string "fullNameAdministrator", null: false
@@ -68,7 +68,7 @@ ActiveRecord::Schema.define(version: 2021_12_02_084029) do
     t.index ["customerId"], name: "fk_rails_e804dec3ca"
   end
 
-  create_table "columns", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+  create_table "columns", options: "CREATE TABLE \"columns\" (\n  \"id\" bigint NOT NULL AUTO_INCREMENT,\n  \"batteryId\" bigint NOT NULL,\n  \"types\" varchar(255) NOT NULL,\n  \"numberFloorServed\" varchar(255) NOT NULL,\n  \"status\" varchar(255) NOT NULL,\n  \"information\" varchar(255) NOT NULL,\n  \"notes\" varchar(255) NOT NULL,\n  \"created_at\" datetime NOT NULL,\n  \"updated_at\" datetime NOT NULL,\n  PRIMARY KEY (\"id\"),\n  KEY \"fk_rails_5c0968a3ea\" (\"batteryId\"),\n  CONSTRAINT \"fk_rails_5c0968a3ea\" FOREIGN KEY (\"batteryId\") REFERENCES \"batteries\" (\"id\")\n)", force: :cascade do |t|
     t.bigint "batteryId", null: false
     t.string "types", null: false
     t.string "numberFloorServed", null: false
@@ -80,7 +80,7 @@ ActiveRecord::Schema.define(version: 2021_12_02_084029) do
     t.index ["batteryId"], name: "fk_rails_5c0968a3ea"
   end
 
-  create_table "customers", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+  create_table "customers", options: "CREATE TABLE \"customers\" (\n  \"id\" bigint NOT NULL AUTO_INCREMENT,\n  \"userId\" int NOT NULL,\n  \"dateCreation\" datetime NOT NULL,\n  \"compagnyName\" varchar(255) NOT NULL,\n  \"addressId\" bigint NOT NULL,\n  \"fullName\" varchar(255) NOT NULL,\n  \"contactPhone\" varchar(255) NOT NULL,\n  \"email\" varchar(255) NOT NULL,\n  \"description\" varchar(255) NOT NULL,\n  \"fullNameTechnicalAuthority\" varchar(255) NOT NULL,\n  \"technicalAuthorityPhone\" varchar(255) NOT NULL,\n  \"technicalAuthorityEmail\" varchar(255) NOT NULL,\n  \"created_at\" datetime NOT NULL,\n  \"updated_at\" datetime NOT NULL,\n  PRIMARY KEY (\"id\"),\n  KEY \"fk_rails_835ae73a22\" (\"userId\"),\n  KEY \"fk_rails_71c8d57845\" (\"addressId\"),\n  CONSTRAINT \"fk_rails_71c8d57845\" FOREIGN KEY (\"addressId\") REFERENCES \"addresses\" (\"id\"),\n  CONSTRAINT \"fk_rails_835ae73a22\" FOREIGN KEY (\"userId\") REFERENCES \"users\" (\"id\")\n)", force: :cascade do |t|
     t.integer "userId", null: false
     t.datetime "dateCreation", null: false
     t.string "compagnyName", null: false
@@ -98,7 +98,7 @@ ActiveRecord::Schema.define(version: 2021_12_02_084029) do
     t.index ["userId"], name: "fk_rails_835ae73a22"
   end
 
-  create_table "elevators", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+  create_table "elevators", options: "CREATE TABLE \"elevators\" (\n  \"id\" bigint NOT NULL AUTO_INCREMENT,\n  \"columnId\" bigint NOT NULL,\n  \"serialNumber\" varchar(255) NOT NULL,\n  \"model\" varchar(255) NOT NULL,\n  \"types\" varchar(255) NOT NULL,\n  \"status\" varchar(255) NOT NULL,\n  \"dateCommissioning\" datetime NOT NULL,\n  \"dateLastInspection\" datetime NOT NULL,\n  \"certificateOperations\" varchar(255) NOT NULL,\n  \"information\" varchar(255) NOT NULL,\n  \"notes\" varchar(255) NOT NULL,\n  \"created_at\" datetime NOT NULL,\n  \"updated_at\" datetime NOT NULL,\n  PRIMARY KEY (\"id\"),\n  KEY \"fk_rails_51711cce16\" (\"columnId\"),\n  CONSTRAINT \"fk_rails_51711cce16\" FOREIGN KEY (\"columnId\") REFERENCES \"columns\" (\"id\")\n)", force: :cascade do |t|
     t.bigint "columnId", null: false
     t.string "serialNumber", null: false
     t.string "model", null: false
@@ -114,7 +114,7 @@ ActiveRecord::Schema.define(version: 2021_12_02_084029) do
     t.index ["columnId"], name: "fk_rails_51711cce16"
   end
 
-  create_table "employees", id: :integer, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+  create_table "employees", id: :integer, options: "CREATE TABLE \"employees\" (\n  \"id\" int NOT NULL AUTO_INCREMENT,\n  \"first_name\" varchar(255) NOT NULL,\n  \"last_name\" varchar(255) NOT NULL,\n  \"title\" varchar(255) NOT NULL,\n  \"email\" varchar(255) NOT NULL,\n  \"user_id\" int NOT NULL,\n  \"created_at\" datetime NOT NULL,\n  \"updated_at\" datetime NOT NULL,\n  PRIMARY KEY (\"id\"),\n  KEY \"fk_rails_dcfd3d4fc3\" (\"user_id\"),\n  CONSTRAINT \"fk_rails_dcfd3d4fc3\" FOREIGN KEY (\"user_id\") REFERENCES \"users\" (\"id\")\n)", force: :cascade do |t|
     t.string "first_name", null: false
     t.string "last_name", null: false
     t.string "title", null: false
@@ -125,7 +125,7 @@ ActiveRecord::Schema.define(version: 2021_12_02_084029) do
     t.index ["user_id"], name: "fk_rails_dcfd3d4fc3"
   end
 
-  create_table "interventions", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+  create_table "interventions", options: "CREATE TABLE \"interventions\" (\n  \"id\" bigint NOT NULL AUTO_INCREMENT,\n  \"author\" bigint NOT NULL,\n  \"customer_id\" bigint NOT NULL,\n  \"building_id\" bigint NOT NULL,\n  \"battery_id\" bigint NOT NULL,\n  \"column_id\" bigint DEFAULT NULL,\n  \"elevator_id\" bigint DEFAULT NULL,\n  \"employee_id\" int DEFAULT NULL,\n  \"start_of_intervention\" datetime DEFAULT NULL,\n  \"end_of_intervention\" datetime DEFAULT NULL,\n  \"result\" varchar(255) DEFAULT 'Incomplete',\n  \"report\" varchar(255) DEFAULT NULL,\n  \"status\" varchar(255) DEFAULT 'Pending',\n  \"created_at\" datetime NOT NULL,\n  \"updated_at\" datetime NOT NULL,\n  PRIMARY KEY (\"id\"),\n  KEY \"fk_rails_911b4ef939\" (\"building_id\"),\n  KEY \"fk_rails_268aede6d6\" (\"battery_id\"),\n  KEY \"fk_rails_d05fb241b3\" (\"column_id\"),\n  KEY \"fk_rails_11b5a4bd36\" (\"elevator_id\"),\n  KEY \"fk_rails_2e0d31b7ad\" (\"employee_id\"),\n  KEY \"fk_rails_4242c0f569\" (\"customer_id\"),\n  CONSTRAINT \"fk_rails_11b5a4bd36\" FOREIGN KEY (\"elevator_id\") REFERENCES \"elevators\" (\"id\"),\n  CONSTRAINT \"fk_rails_268aede6d6\" FOREIGN KEY (\"battery_id\") REFERENCES \"batteries\" (\"id\"),\n  CONSTRAINT \"fk_rails_2e0d31b7ad\" FOREIGN KEY (\"employee_id\") REFERENCES \"employees\" (\"id\"),\n  CONSTRAINT \"fk_rails_4242c0f569\" FOREIGN KEY (\"customer_id\") REFERENCES \"customers\" (\"id\"),\n  CONSTRAINT \"fk_rails_911b4ef939\" FOREIGN KEY (\"building_id\") REFERENCES \"buildings\" (\"id\"),\n  CONSTRAINT \"fk_rails_d05fb241b3\" FOREIGN KEY (\"column_id\") REFERENCES \"columns\" (\"id\")\n)", force: :cascade do |t|
     t.bigint "author", null: false
     t.bigint "customer_id", null: false
     t.bigint "building_id", null: false
@@ -148,7 +148,7 @@ ActiveRecord::Schema.define(version: 2021_12_02_084029) do
     t.index ["employee_id"], name: "fk_rails_2e0d31b7ad"
   end
 
-  create_table "leads", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+  create_table "leads", options: "CREATE TABLE \"leads\" (\n  \"id\" bigint NOT NULL AUTO_INCREMENT,\n  \"fullNameContact\" varchar(255) NOT NULL,\n  \"compagnyName\" varchar(255) NOT NULL,\n  \"email\" varchar(255) NOT NULL,\n  \"phoneNumber\" varchar(255) NOT NULL,\n  \"nameProject\" varchar(255) NOT NULL,\n  \"descriptionProject\" varchar(255) NOT NULL,\n  \"department\" varchar(255) NOT NULL,\n  \"message\" varchar(255) NOT NULL,\n  \"file\" blob,\n  \"date\" datetime NOT NULL,\n  \"created_at\" datetime NOT NULL,\n  \"updated_at\" datetime NOT NULL,\n  PRIMARY KEY (\"id\")\n)", force: :cascade do |t|
     t.string "fullNameContact", null: false
     t.string "compagnyName", null: false
     t.string "email", null: false
@@ -163,7 +163,7 @@ ActiveRecord::Schema.define(version: 2021_12_02_084029) do
     t.datetime "updated_at", null: false
   end
 
-  create_table "quotes", id: :integer, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+  create_table "quotes", id: :integer, options: "CREATE TABLE \"quotes\" (\n  \"id\" int NOT NULL AUTO_INCREMENT,\n  \"type_building\" varchar(255) NOT NULL,\n  \"numApartment\" int DEFAULT NULL,\n  \"numFloor\" int DEFAULT NULL,\n  \"numElevator\" int DEFAULT NULL,\n  \"numOccupant\" int DEFAULT NULL,\n  \"compagnyName\" varchar(255) DEFAULT NULL,\n  \"email\" varchar(255) DEFAULT NULL,\n  \"typeService\" varchar(255) DEFAULT NULL,\n  \"totalElevatorPrice\" decimal(10,0) DEFAULT NULL,\n  \"total\" decimal(10,0) DEFAULT NULL,\n  \"installationFees\" decimal(10,0) DEFAULT NULL,\n  \"created_at\" datetime NOT NULL,\n  \"updated_at\" datetime NOT NULL,\n  PRIMARY KEY (\"id\")\n)", force: :cascade do |t|
     t.string "type_building", null: false
     t.integer "numApartment"
     t.integer "numFloor"
@@ -179,7 +179,7 @@ ActiveRecord::Schema.define(version: 2021_12_02_084029) do
     t.datetime "updated_at", null: false
   end
 
-  create_table "users", id: :integer, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+  create_table "users", id: :integer, options: "CREATE TABLE \"users\" (\n  \"id\" int NOT NULL AUTO_INCREMENT,\n  \"email\" varchar(255) NOT NULL,\n  \"created_at\" datetime NOT NULL,\n  \"updated_at\" datetime NOT NULL,\n  \"encrypted_password\" varchar(255) NOT NULL DEFAULT '',\n  \"reset_password_token\" varchar(255) DEFAULT NULL,\n  \"reset_password_sent_at\" datetime DEFAULT NULL,\n  \"remember_created_at\" datetime DEFAULT NULL,\n  PRIMARY KEY (\"id\"),\n  UNIQUE KEY \"index_users_on_email\" (\"email\"),\n  UNIQUE KEY \"index_users_on_reset_password_token\" (\"reset_password_token\")\n)", force: :cascade do |t|
     t.string "email", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false

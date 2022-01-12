@@ -8,7 +8,7 @@ namespace :question do
     end
     
     task :q1 do
-        ActiveRecord::Base.establish_connection(:adapter  => "postgresql",:host => ENV["HOST_POSTGRESQL"],:username => ENV["POSTGRESQL_USERNAME"],:password => ENV["POSTGRESQL_PASSWORD"],:database => ENV["POSTGRESQL_DATABASE"])
+        ActiveRecord::Base.establish_connection(:adapter  => "postgresql",:host => ENV["HOST_POSTGRESQL"],:username => ENV["POSTGRESQL_USERNAME"],:password => ENV["POSTGRESQL_PASSWORD"],:database => ENV["POSTGRESQL_DATABASE"],:port => ENV["MYSQL_PORT"])
         row = ActiveRecord::Base.connection.execute('select distinct EXTRACT(month from fc.creation_date) as month, COUNT(fc."compagnyName") as Number_of_Contacts
                                                     from fact_contacts fc
                                                     group by EXTRACT(month from fc.creation_date)
@@ -19,7 +19,7 @@ namespace :question do
     end
 
     task :q2 do
-        ActiveRecord::Base.establish_connection(:adapter  => "postgresql",:host => ENV["HOST_POSTGRESQL"],:username => ENV["POSTGRESQL_USERNAME"],:password => ENV["POSTGRESQL_PASSWORD"],:database => ENV["POSTGRESQL_DATABASE"])
+        ActiveRecord::Base.establish_connection(:adapter  => "postgresql",:host => ENV["HOST_POSTGRESQL"],:username => ENV["POSTGRESQL_USERNAME"],:password => ENV["POSTGRESQL_PASSWORD"],:database => ENV["POSTGRESQL_DATABASE"],:port => ENV["MYSQL_PORT"])
         row = ActiveRecord::Base.connection.execute('select distinct EXTRACT(month from fq.creation_date) as month, COUNT(fq."compagnyName")
                                                     from fact_quotes fq 
                                                     group by EXTRACT(month from fq.creation_date)
@@ -31,7 +31,7 @@ namespace :question do
     end
 
     task :q3 do
-        ActiveRecord::Base.establish_connection(:adapter  => "postgresql",:host => ENV["HOST_POSTGRESQL"], :username => ENV["POSTGRESQL_USERNAME"],:password => ENV["POSTGRESQL_PASSWORD"],:database => ENV["POSTGRESQL_DATABASE"])
+        ActiveRecord::Base.establish_connection(:adapter  => "postgresql",:host => ENV["HOST_POSTGRESQL"], :username => ENV["POSTGRESQL_USERNAME"],:password => ENV["POSTGRESQL_PASSWORD"],:database => ENV["POSTGRESQL_DATABASE"],:port => ENV["MYSQL_PORT"])
         row = ActiveRecord::Base.connection.execute('select dc.id , dc."nbElevator" 
                                                     from dim_customers dc 
                                                     ')
