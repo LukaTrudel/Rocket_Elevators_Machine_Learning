@@ -124,3 +124,6 @@ gem 'bcrypt_pbkdf'
 gem 'quotify'
 
 gem 'net-scp'
+
+gem 'newrelic_rpm'
+
