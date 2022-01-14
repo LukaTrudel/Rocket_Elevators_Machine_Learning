@@ -22,3 +22,5 @@ For the DevOps week I deployed this website on my Digital Ocean server, and impl
 
 The steps I took to implement those tools will be provided as an attached document in the deliverable.
 
+Website link: http://rocketelevatorsproject.me/
+
