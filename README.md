@@ -9,7 +9,7 @@
 </h3>
   
   <p align="center">
-    Odyssey Program - Weeks 4 & 5
+    Odyssey Program - Week 14
   </p>
 </p>
 
